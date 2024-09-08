@@ -17,7 +17,7 @@ string DataBase::addLine(const string& line) {
         out.close();
     }
     else {
-        throw runtime_error("Не удалось открыть файл для записи: " + path);
+        throw runtime_error("РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» РґР»СЏ Р·Р°РїРёСЃРё: " + path);
     }
     return line;
 }
@@ -32,14 +32,14 @@ bool DataBase::removeLines(const vector<int>& ids) {
             vector<string> split = splitStr(buf, ';');
             if (!split.empty()) {
                 try {
-                    int currentId = stoi(split[0]); // Преобразуем первую часть строки в int
+                    int currentId = stoi(split[0]);// РџСЂРµРѕР±СЂР°Р·СѓРµРј РїРµСЂРІСѓСЋ С‡Р°СЃС‚СЊ СЃС‚СЂРѕРєРё РІ int
                     if (idsSet.find(currentId) == idsSet.end()) {
                         allLines += buf + "\n";
                     }
                 }
                 catch (const invalid_argument& e) {
-                    // Обработка ошибок, если преобразование не удалось
-                    cerr << "Ошибка преобразования строки в int: " << split[0] << endl;
+                    // РћР±СЂР°Р±РѕС‚РєР° РѕС€РёР±РѕРє, РµСЃР»Рё РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РЅРµ СѓРґР°Р»РѕСЃСЊ
+                    cerr << "ГЋГёГЁГЎГЄГ  ГЇГ°ГҐГ®ГЎГ°Г Г§Г®ГўГ Г­ГЁГї Г±ГІГ°Г®ГЄГЁ Гў int: " << split[0] << endl;
                 }
             }
         }
@@ -47,13 +47,13 @@ bool DataBase::removeLines(const vector<int>& ids) {
 
         ofstream out(path);
         if (!out.is_open()) {
-            throw runtime_error("Не удалось открыть файл для записи: " + path);
+            throw runtime_error("РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» РґР»СЏ Р·Р°РїРёСЃРё: " + path);
         }
         out << allLines;
         out.close();
     }
     else {
-        throw runtime_error("Файл не найден: " + path);
+        throw runtime_error("Р¤Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ: " + path);
     }
     return true;
 }
@@ -68,7 +68,7 @@ void DataBase::showDoc() {
         in.close();
     }
     else {
-        throw runtime_error("Файл не найден: " + path);
+        throw runtime_error("Р¤Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ: " + path);
     }
 }
 
